@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'Food_Card.dart';
+// import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'Detail_screen.dart';
+
 import 'dart:convert';
 import 'package:flutter/services.dart';
 
@@ -135,7 +136,11 @@ class _HomeScreenBodyState extends State<HomeScreenBody> {
             itemCount: data.length,
             itemBuilder: (BuildContext cntx, int index) {
               return GestureDetector(
-                onTap: () {},
+                onTap: () {
+                  Navigator.of(context).push(MaterialPageRoute(
+                    builder: (context) => Details(data[index]['recipe']),
+                  ));
+                },
                 child: Padding(
                   padding: const EdgeInsets.fromLTRB(15, 8, 8, 8),
                   child: Row(
